@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.1;net46</TargetFrameworks>
-    <PackageId>TwitchLib.Extension</PackageId>
+    <PackageId>StrangeLoopGames.TwitchLib.Extension</PackageId>
     <Version>1.3.0</Version>
     <Description>Extension component of TwitchLib. This component allows you to access Twitch's Extension Api system</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
