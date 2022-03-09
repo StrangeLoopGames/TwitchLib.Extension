@@ -29,7 +29,7 @@ jobs:
       - name: Configure NuGet
         uses: nuget/setup-nuget@v1
         with:
-          nuget-api-key: ${{ secrets.NuGetAPIKey }}
+          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
           nuget-version: '5.x'
   
       # Build and pack Nuget packages
@@ -42,4 +42,4 @@ jobs:
       - name: Deploy NuGet packages (Nuget.org)
         run: |
           cd bin/
-          dotnet nuget push "*.nupkg" --api-key ${{ secrets.NuGetAPIKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push "*.nupkg" --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate
