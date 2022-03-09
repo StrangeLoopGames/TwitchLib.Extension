@@ -32,9 +32,14 @@ jobs:
           nuget-api-key: ${{ secrets.NuGetAPIKey }}
           nuget-version: '5.x'
   
-      # Build, pack, and deploy the Nuget package
-      - name: Build and deploy NuGet package
+      # Build and pack Nuget packages
+      - name: Build NuGet packages
         run: |
           dotnet build
-          dotnet pack --output bin\
-          dotnet nuget push "./bin/*.nupkg" --api-key ${{ secrets.NuGetAPIKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet pack --output bin/
+          
+      # Deploy our packages to Nuget.org
+      - name: Deploy NuGet packages (Nuget.org)
+        run: |
+          cd bin/
+          dotnet nuget push "*.nupkg" --api-key ${{ secrets.NuGetAPIKey }} --source https://api.nuget.org/v3/index.json --skip-duplicate
