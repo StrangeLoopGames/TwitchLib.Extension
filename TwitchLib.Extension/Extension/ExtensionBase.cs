@@ -180,7 +180,7 @@ namespace TwitchLib.Extension
             if (string.IsNullOrWhiteSpace(extensionId)) throw new BadParameterException("The extension id is not valid. It is not allowed to be null, empty or filled with whitespaces.");
             if (string.IsNullOrWhiteSpace(extensionOwnerId)) throw new BadParameterException("The extension owner id is not valid. It is not allowed to be null, empty or filled with whitespaces.");
 
-            var url = $"/live?extension_id{extensionId}";
+            var url = $"/live?extension_id={extensionId}";
             if (!string.IsNullOrWhiteSpace(cursor))
                 url += $"?after={cursor}";
             return LiveChannels.FromJson((await RequestAsync(extensionSecret, url, "GET", extensionOwnerId, extensionId).ConfigureAwait(false)).Value);
